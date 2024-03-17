@@ -42,7 +42,7 @@ def get_ipk():
 
     mahasiswa_data = db.mahasiswa.find_one({'nama': nama})
     if not mahasiswa_data:
-        return jsonify({'result': 'error', 'message': 'Mahasiswa tidak ditemukan'})
+        return jsonify({'result': 'error', 'ipk': 0})
 
     ipk = mahasiswa_data[ipk_key] if ipk_key in mahasiswa_data else None
     return jsonify({'result': 'success', 'ipk': ipk})
