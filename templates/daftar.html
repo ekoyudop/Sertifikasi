@@ -67,10 +67,14 @@
                             document.getElementById('beasiswa').disabled = false;
                             document.getElementById('berkas').disabled = false;
                             document.getElementById('submit').disabled = false;
+                            document.getElementById('submit').classList.remove('btn-secondary');
+                            document.getElementById('submit').classList.add('btn-success');
                         } else {
                             document.getElementById('beasiswa').disabled = true;
                             document.getElementById('berkas').disabled = true;
                             document.getElementById('submit').disabled = true;
+                            document.getElementById('submit').classList.remove('btn-success');
+                            document.getElementById('submit').classList.add('btn-secondary');
                         }
                     } else {
                         document.getElementById('ipk').value = response['ipk'];
@@ -78,10 +82,14 @@
                             document.getElementById('beasiswa').disabled = false;
                             document.getElementById('berkas').disabled = false;
                             document.getElementById('submit').disabled = false;
+                            document.getElementById('submit').classList.remove('btn-secondary');
+                            document.getElementById('submit').classList.add('btn-success');
                         } else {
                             document.getElementById('beasiswa').disabled = true;
                             document.getElementById('berkas').disabled = true;
                             document.getElementById('submit').disabled = true;
+                            document.getElementById('submit').classList.remove('btn-success');
+                            document.getElementById('submit').classList.add('btn-secondary');
                         }
                     }
                 }
@@ -131,19 +139,20 @@
                         <div class="row mb-2">
                             <label for="nama" class="col-4 col-form-label">Masukkan Nama</label>
                             <div class="col-8">
-                                <input type="text" class="form-control" id="nama" onchange="getIpk()" placeholder="">
+                                <input type="text" class="form-control" id="nama" onchange="getIpk()" placeholder="" required="">
                             </div>
                         </div>
                         <div class="row mb-2">
                             <label for="email" class="col-4 col-form-label">Masukkan Email</label>
                             <div class="col-8">
-                                <input type="email" class="form-control" id="email" placeholder="">
+                                <input type="email" class="form-control" id="email" placeholder="" required="">
+                                <span id="emailError" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="row mb-2">
                             <label for="nomor-hp" class="col-4 col-form-label">Nomor HP</label>
                             <div class="col-8">
-                                <input type="number" class="form-control" id="nomor-hp" placeholder="">
+                                <input type="number" class="form-control" id="nomor-hp" placeholder="" required="">
                             </div>
                         </div>
                         <div class="row mb-2">
@@ -165,7 +174,7 @@
                         <div class="row mb-2">
                             <label for="ipk" class="col-4 col-form-label">IPK Terakhir</label>
                             <div class="col-8">
-                                <input type="text" class="form-control" id="ipk" placeholder="" disabled>
+                                <input type="text" class="form-control" id="ipk" placeholder="" required="" disabled>
                             </div>
 
                         </div>
@@ -183,14 +192,14 @@
                         <div class="row mb-2">
                             <label for="berkas" class="col-4 col-form-label">Upload Berkas Syarat</label>
                             <div class="col-8">
-                                <input type="file" class="form-control" id="berkas" placeholder="" disabled>
+                                <input type="file" class="form-control" id="berkas" placeholder="" required="" disabled>
                             </div>
                         </div>
                         <div class="menu d-flex justify-content-center mt-5">
                             <button type="button" onclick="submit()" id="submit"
-                                class="btn btn-lg btn-success bg-gradient animate__animated animate__fadeInUp"
+                                class="btn btn-lg btn-secondary bg-gradient animate__animated animate__fadeInUp"
                                 disabled>Daftar</button>
-                            <button type="button"
+                            <button type="button" onclick="window.location.href='/'"
                                 class="btn btn-lg btn-secondary bg-gradient animate__animated animate__fadeInUp">Batal</button>
                         </div>
                     </div>
