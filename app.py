@@ -21,7 +21,11 @@ def home():
 
 @app.route('/daftar', methods=['GET'])
 def daftar():
-    return render_template('daftar.html', msg="Home")
+    return render_template('daftar.html', msg="Daftar")
+
+@app.route('/hasil', methods=['GET'])
+def hasil():
+    return render_template('hasil.html', msg="Hasil")
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
