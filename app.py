@@ -27,5 +27,28 @@ def daftar():
 def hasil():
     return render_template('hasil.html', msg="Hasil")
 
+@app.route("/submit", methods=["POST"])
+def submit():
+
+    nama = request.form["nama"]
+    email = request.form["email"]
+    nomorhp = int(request.form["nomorhp"])
+    semester = int(request.form["semester"])
+    # ipk = int(request.form["ipk"])
+    beasiswa = request.form["beasiswa"]
+    # berkas = request.files["berkas"]
+
+    db.beasiswa.insert_one({
+        "name": nama,
+        "email": email,
+        "nomorhp": nomorhp,
+        "semester": semester,
+        # "ipk": ipk,
+        "beasiswa": beasiswa,
+        # "berkas": berkas
+    })
+    
+    return jsonify({"result": "success"})
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
