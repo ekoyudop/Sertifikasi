@@ -3,6 +3,12 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 from flask import Flask, request, render_template, redirect, url_for, jsonify
 from pymongo import MongoClient
+import jwt
+import datetime
+import hashlib
+from bson import ObjectId
+from datetime import datetime
+
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
@@ -30,14 +36,22 @@ def hasil():
 
 @app.route("/submit", methods=["POST"])
 def submit():
-
+    
     nama = request.form["nama"]
     email = request.form["email"]
     nomorhp = int(request.form["nomorhp"])
     semester = int(request.form["semester"])
     # ipk = int(request.form["ipk"])
     beasiswa = request.form["beasiswa"]
-    # berkas = request.files["berkas"]
+    berkas = request.files["berkas"]
+
+    today = datetime.now()
+    mytime = today.strftime("%Y-%m-%d-%H-%M-%S")
+    
+    if berkas:
+        extension = berkas.filename.split('.')[-1]
+        filename = f'static/submit-{mytime}.{extension}'
+        berkas.save(filename)
 
     db.beasiswa.insert_one({
         "nama": nama,
@@ -46,7 +60,7 @@ def submit():
         "semester": semester,
         # "ipk": ipk,
         "beasiswa": beasiswa,
-        # "berkas": berkas
+        "berkas": filename if berkas else None,
         "status": "Belum diverifikasi"
     })
     

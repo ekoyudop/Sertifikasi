@@ -53,7 +53,7 @@
     <div class="container">
         <h1 class="text-center p-5 animate__animated animate__fadeIn">HASIL BEASISWA</h1>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Nama</th>
@@ -75,7 +75,7 @@
                         <td>{{beasiswa.semester}}</td>
                         <td>{{beasiswa.ipk}}</td>
                         <td>{{beasiswa.beasiswa}}</td>
-                        <td>{{beasiswa.berkas}}</td>
+                        <td><a href="{{beasiswa.berkas}}" download>Download</a></td>
                         <td>{{beasiswa.status}}</td>
                     </tr>
                     {% endfor %}
