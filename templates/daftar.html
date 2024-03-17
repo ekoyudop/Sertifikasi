@@ -23,30 +23,42 @@
 
     <script>
         function submit() {
-            var formData = new FormData();
-            formData.append('nama', $("#nama").val());
-            formData.append('email', $("#email").val());
-            formData.append('nomorhp', $("#nomor-hp").val());
-            formData.append('semester', $("#semester").val());
-            formData.append('ipk', $("#ipk").val());
-            formData.append('beasiswa', $("#beasiswa").val());
-            formData.append('berkas', $('#berkas')[0].files[0]);
+            var nama = $("#nama").val();
+            var email = $("#email").val();
+            var nomorhp = $("#nomor-hp").val();
+            var semester = $("#semester").val();
+            var ipk = $("#ipk").val();
+            var beasiswa = $("#beasiswa").val();
+            var berkas = $('#berkas')[0].files[0];
 
-            $.ajax({
-                type: "POST",
-                url: "/submit",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    if (response["result"] === "success") {
-                        alert("Berhasil submit");
-                        window.location.href = '/hasil';
-                    } else {
-                        alert("Error: " + response["message"]);
-                    }
-                },
-            });
+            if (nama && email && nomorhp && semester && ipk && beasiswa !== "Pilihan Beasiswa" && berkas) {
+                var formData = new FormData();
+                formData.append('nama', nama);
+                formData.append('email', email);
+                formData.append('nomorhp', nomorhp);
+                formData.append('semester', semester);
+                formData.append('ipk', ipk);
+                formData.append('beasiswa', beasiswa);
+                formData.append('berkas', berkas);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/submit",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        if (response["result"] === "success") {
+                            alert("Berhasil submit");
+                            window.location.href = '/hasil';
+                        } else {
+                            alert("Error: " + response["message"]);
+                        }
+                    },
+                });
+            } else {
+                $("#upload-error").removeClass('d-none');
+            }
         }
 
         function getIpk() {
@@ -139,26 +151,27 @@
                         <div class="row mb-2">
                             <label for="nama" class="col-4 col-form-label">Masukkan Nama</label>
                             <div class="col-8">
-                                <input type="text" class="form-control" id="nama" onchange="getIpk()" placeholder="" required="">
+                                <input type="text" class="form-control" id="nama" onchange="getIpk()" placeholder=""
+                                    required>
                             </div>
                         </div>
                         <div class="row mb-2">
                             <label for="email" class="col-4 col-form-label">Masukkan Email</label>
                             <div class="col-8">
-                                <input type="email" class="form-control" id="email" placeholder="" required="">
+                                <input type="email" class="form-control" id="email" placeholder="" required>
                                 <span id="emailError" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="row mb-2">
                             <label for="nomor-hp" class="col-4 col-form-label">Nomor HP</label>
                             <div class="col-8">
-                                <input type="number" class="form-control" id="nomor-hp" placeholder="" required="">
+                                <input type="number" class="form-control" id="nomor-hp" placeholder="" required>
                             </div>
                         </div>
                         <div class="row mb-2">
                             <label for="semester" class="col-4 col-form-label">Semester saat ini</label>
                             <div class="col-8">
-                                <select class="form-select" id="semester" onchange="getIpk()" required="">
+                                <select class="form-select" id="semester" onchange="getIpk()" required>
                                     <option selected>Pilih</option>
                                     <option value="1">Semester 1</option>
                                     <option value="2">Semester 2</option>
@@ -174,14 +187,14 @@
                         <div class="row mb-2">
                             <label for="ipk" class="col-4 col-form-label">IPK Terakhir</label>
                             <div class="col-8">
-                                <input type="text" class="form-control" id="ipk" placeholder="" required="" disabled>
+                                <input type="text" class="form-control" id="ipk" placeholder="" required disabled>
                             </div>
 
                         </div>
                         <div class="row mb-2">
                             <label for="beasiswa" class="col-4 col-form-label">Pilih Beasiswa</label>
                             <div class="col-8">
-                                <select class="form-select" id="beasiswa" required="" disabled>
+                                <select class="form-select" id="beasiswa" required disabled>
                                     <option selected>Pilihan Beasiswa</option>
                                     <option value="Beasiswa Akademik">Beasiswa Akademik</option>
                                     <option value="Beasiswa Non Akademik">Beasiswa Non Akademik</option>
@@ -192,7 +205,12 @@
                         <div class="row mb-2">
                             <label for="berkas" class="col-4 col-form-label">Upload Berkas Syarat</label>
                             <div class="col-8">
-                                <input type="file" class="form-control" id="berkas" placeholder="" required="" disabled>
+                                <input type="file" class="form-control" id="berkas" placeholder="" required disabled>
+                            </div>
+                        </div>
+                        <div id="upload-error" class="row mb-2 d-none mt-3">
+                            <div class="col-8 offset-4">
+                                <span class="text-danger">Harap isi semua field</span>
                             </div>
                         </div>
                         <div class="menu d-flex justify-content-center mt-5">
