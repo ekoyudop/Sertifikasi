@@ -54,7 +54,7 @@ def submit():
     email = request.form["email"]
     nomorhp = int(request.form["nomorhp"])
     semester = int(request.form["semester"])
-    # ipk = int(request.form["ipk"])
+    ipk = int(request.form["ipk"])
     beasiswa = request.form["beasiswa"]
     berkas = request.files["berkas"]
 
@@ -71,7 +71,7 @@ def submit():
         "email": email,
         "nomorhp": nomorhp,
         "semester": semester,
-        # "ipk": ipk,
+        "ipk": ipk,
         "beasiswa": beasiswa,
         "berkas": filename if berkas else None,
         "status": "Belum diverifikasi"
