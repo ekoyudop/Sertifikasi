@@ -17,15 +17,16 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def home():
-    return render_template('index.html', msg="Home")
+    return render_template('index.html')
 
 @app.route('/daftar', methods=['GET'])
 def daftar():
-    return render_template('daftar.html', msg="Daftar")
+    return render_template('daftar.html')
 
 @app.route('/hasil', methods=['GET'])
 def hasil():
-    return render_template('hasil.html', msg="Hasil")
+    beasiswa_list = db.beasiswa.find()
+    return render_template('hasil.html', beasiswa_list=beasiswa_list)
 
 @app.route("/submit", methods=["POST"])
 def submit():
@@ -39,13 +40,14 @@ def submit():
     # berkas = request.files["berkas"]
 
     db.beasiswa.insert_one({
-        "name": nama,
+        "nama": nama,
         "email": email,
         "nomorhp": nomorhp,
         "semester": semester,
         # "ipk": ipk,
         "beasiswa": beasiswa,
         # "berkas": berkas
+        "status": "Belum diverifikasi"
     })
     
     return jsonify({"result": "success"})
