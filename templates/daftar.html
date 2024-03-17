@@ -21,21 +21,33 @@
 </head>
 
 <body>
-    <nav class="navbar bg-success">
-        <div class="container justify-content-center">
-            <div class="menu-container text-center p-3">
-                <div class="menu">
-                    <button onclick="window.location.href='/'" type="button" class="btn btn-outline-light">Pilihan
-                        Beasiswa</button>
-                    <button onclick="window.location.href='/daftar'" type="button"
-                        class="btn btn-light">Daftar</button>
-                    <button onclick="window.location.href='/hasil'" type="button"
-                        class="btn btn-outline-light">Hasil</button>
-                </div>
+    <nav class="navbar navbar-expand-lg bg-success">
+        <div class="container-fluid">
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse justify-content-md-center collapse" id="navbarsExample10">
+                <ul class="navbar-nav menu">
+                    <li class="nav-item p-1">
+                        <button onclick="window.location.href='/'" type="button" class="btn btn-outline-light">Pilihan
+                            Beasiswa</button>
+                    </li>
+                    <li class="nav-item p-1">
+                        <button onclick="window.location.href='/daftar'" type="button"
+                            class="btn btn-light">Daftar</button>
+                    </li>
+                    <li class="nav-item p-1">
+                        <button onclick="window.location.href='/hasil'" type="button"
+                            class="btn btn-outline-light">Hasil</button>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
-    
+
     <div class="container">
         <h1 class="text-center mt-5">DAFTAR BEASISWA</h1>
     </div>
