@@ -54,7 +54,7 @@ def submit():
     email = request.form["email"]
     nomorhp = int(request.form["nomorhp"])
     semester = int(request.form["semester"])
-    ipk = int(request.form["ipk"])
+    ipk = float(request.form["ipk"])
     beasiswa = request.form["beasiswa"]
     berkas = request.files["berkas"]
 
