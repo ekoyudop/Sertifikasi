@@ -34,6 +34,19 @@ def hasil():
     beasiswa_list = db.beasiswa.find()
     return render_template('hasil.html', beasiswa_list=beasiswa_list)
 
+@app.route('/get_ipk', methods=['POST'])
+def get_ipk():
+    nama = request.form['nama']
+    semester = int(request.form['semester'])
+    ipk_key = f'ipk-semester{semester}'
+
+    mahasiswa_data = db.mahasiswa.find_one({'nama': nama})
+    if not mahasiswa_data:
+        return jsonify({'result': 'error', 'message': 'Mahasiswa tidak ditemukan'})
+
+    ipk = mahasiswa_data[ipk_key] if ipk_key in mahasiswa_data else None
+    return jsonify({'result': 'success', 'ipk': ipk})
+
 @app.route("/submit", methods=["POST"])
 def submit():
     

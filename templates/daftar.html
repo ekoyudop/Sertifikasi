@@ -48,6 +48,27 @@
                 },
             });
         }
+
+        function getIpk() {
+            var nama = document.getElementById('nama').value;
+            var semester = document.getElementById('semester').value;
+
+            $.ajax({
+                type: "POST",
+                url: "/get_ipk",
+                data: {
+                    'nama': nama,
+                    'semester': semester
+                },
+                success: function (response) {
+                    if (response['result'] === 'success') {
+                        document.getElementById('ipk').value = response['ipk'];
+                    } else {
+                        alert('Error: ' + response['message']);
+                    }
+                }
+            });
+        }
     </script>
 
 </head>
@@ -110,7 +131,7 @@
                         <div class="row mb-2">
                             <label for="semester" class="col-4 col-form-label">Semester saat ini</label>
                             <div class="col-8">
-                                <select class="form-select" id="semester" required="">
+                                <select class="form-select" id="semester" onchange="getIpk()" required="">
                                     <option selected>Pilih</option>
                                     <option value="1">Semester 1</option>
                                     <option value="2">Semester 2</option>
