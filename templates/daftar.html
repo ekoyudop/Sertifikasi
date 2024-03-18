@@ -63,7 +63,9 @@
                 });
             } else if (!isValidEmail(email)) {
                 $("#email-error").removeClass('d-none');
+                $("#upload-error").addClass('d-none');
             } else {
+                $("#email-error").addClass('d-none');
                 $("#upload-error").removeClass('d-none');
             }
         }
