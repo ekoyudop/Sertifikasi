@@ -58,7 +58,7 @@ def submit():
     
     if berkas:
         extension = berkas.filename.split('.')[-1]
-        filename = f'static/beasiswa-{nama}-{mytime}.{extension}'
+        filename = f'static/registrasi/beasiswa-{nama}-{mytime}.{extension}'
         berkas.save(filename)
 
     db.beasiswa.insert_one({
