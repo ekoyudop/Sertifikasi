@@ -57,13 +57,10 @@ def submit():
     ipk = float(request.form["ipk"])
     beasiswa = request.form["beasiswa"]
     berkas = request.files["berkas"]
-
-    today = datetime.now()
-    mytime = today.strftime("%Y-%m-%d-%H-%M-%S")
     
     if berkas:
         extension = berkas.filename.split('.')[-1]
-        filename = f'static/submit-{mytime}.{extension}'
+        filename = f'static/beasiswa-{nama}.{extension}'
         berkas.save(filename)
 
     db.beasiswa.insert_one({
