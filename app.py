@@ -3,6 +3,7 @@ from os.path import join, dirname
 from dotenv import load_dotenv
 from flask import Flask, request, render_template, redirect, url_for, jsonify
 from pymongo import MongoClient
+from datetime import datetime
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
@@ -52,9 +53,12 @@ def submit():
     beasiswa = request.form["beasiswa"]
     berkas = request.files["berkas"]
     
+    today = datetime.now()
+    mytime = today.strftime("%Y-%m-%d-%H-%M-%S")
+    
     if berkas:
         extension = berkas.filename.split('.')[-1]
-        filename = f'static/beasiswa-{nama}.{extension}'
+        filename = f'static/beasiswa-{nama}-{mytime}.{extension}'
         berkas.save(filename)
 
     db.beasiswa.insert_one({
