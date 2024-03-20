@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <style>
+        /* Mengatur ukuran button dan transisi warna serta mengatur jarak, dan tebal font */
         .menu button {
             transition: color 0.3s;
             height: 50px;
@@ -121,14 +122,18 @@
 </head>
 
 <body>
+    <!-- Bagian navbar -->
+
     <nav class="navbar navbar-expand-lg bg-success bg-gradient">
         <div class="container-fluid">
+            <!-- Tombol toggle untuk mobile atau ketika lebar layar kecil -->
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+            <!-- Menu navbar untuk mengarahkan ke halaman pilihan beasiswa, registrasi, dan juga hasil -->
             <div class="navbar-collapse justify-content-md-center collapse" id="navbarsExample10">
                 <ul class="navbar-nav menu">
                     <li class="nav-item p-1">
@@ -148,6 +153,7 @@
         </div>
     </nav>
 
+    <!-- Container yang berisikan form untuk registrasi beasiswa, berupa nama, email, dan nomorhp, semester saat ini, ipk, pilihan beasiswa, dan berkas -->
     <div class="container">
         <h1 class="text-center p-5 animate__animated animate__fadeIn">DAFTAR BEASISWA</h1>
         <div class="row justify-content-center">
@@ -157,6 +163,7 @@
                         <h4>Registrasi Beasiswa</h4>
                     </div>
                     <div class="card-body">
+                        <!-- Input Nama -->
                         <div class="row mb-2">
                             <label for="nama" class="col-4 col-form-label">Masukkan Nama</label>
                             <div class="col-8">
@@ -164,18 +171,21 @@
                                     required>
                             </div>
                         </div>
+                        <!-- Input Email -->
                         <div class="row mb-2">
                             <label for="email" class="col-4 col-form-label">Masukkan Email</label>
                             <div class="col-8">
                                 <input type="email" class="form-control" id="email" placeholder="" required>
                             </div>
                         </div>
+                        <!-- Input nomor HP -->
                         <div class="row mb-2">
                             <label for="nomor-hp" class="col-4 col-form-label">Nomor HP</label>
                             <div class="col-8">
                                 <input type="number" class="form-control" id="nomor-hp" placeholder="" required>
                             </div>
                         </div>
+                        <!-- Input semester saat ini -->
                         <div class="row mb-2">
                             <label for="semester" class="col-4 col-form-label">Semester saat ini</label>
                             <div class="col-8">
@@ -192,6 +202,7 @@
                                 </select>
                             </div>
                         </div>
+                        <!-- Nilai IPK terakhir -->
                         <div class="row mb-2">
                             <label for="ipk" class="col-4 col-form-label">IPK Terakhir</label>
                             <div class="col-8">
@@ -199,6 +210,7 @@
                             </div>
 
                         </div>
+                        <!-- Input Pilihan beasiswa -->
                         <div class="row mb-2">
                             <label for="beasiswa" class="col-4 col-form-label">Pilih Beasiswa</label>
                             <div class="col-8">
@@ -210,25 +222,32 @@
                                 </select>
                             </div>
                         </div>
+                        <!-- Input berkas -->
                         <div class="row mb-2">
                             <label for="berkas" class="col-4 col-form-label">Upload Berkas Syarat</label>
                             <div class="col-8">
                                 <input type="file" class="form-control" id="berkas" placeholder="" required disabled>
                             </div>
                         </div>
+                        <!-- Pengingat agar IPK harus di atas 3.0 untuk melanjutkan registrasi -->
                         <div class="row mb-2 mt-3">
                             <p>Note : IPK terakhir harus di atas 3.0 untuk dapat melanjutkan registrasi</p>
                         </div>
+                        <!-- Pesan error ketika ada inputan yang belum diisi atau belum benar -->
                         <div id="upload-error" class="row mb-2 mt-3 d-none">
                             <p class="text-danger">Mohon untuk diisi semua dengan benar</p>
                         </div>
+                        <!-- Pesan error ketika email yang dimasukkan tidak sesuai/benar -->
                         <div id="email-error" class="row mb-2 mt-3 d-none">
                             <p class="text-danger">Mohon untuk mengisi email dengan benar</p>
                         </div>
+                        <!-- Tombol submit dan batal -->
                         <div class="menu d-flex justify-content-center mt-3">
+                            <!-- Tombol submit untuk mengirim inputan ke database -->
                             <button type="button" onclick="submit()" id="submit"
                                 class="btn btn-lg btn-secondary bg-gradient animate__animated animate__fadeInUp"
                                 disabled>Daftar</button>
+                            <!-- Tombol cancel untuk mengarahkan ke halaman batal -->
                             <button type="button" onclick="window.location.href='/'"
                                 class="btn btn-lg btn-secondary bg-gradient animate__animated animate__fadeInUp">Batal</button>
                         </div>

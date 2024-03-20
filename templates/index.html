@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     <style>
+        /* Mengatur ukuran button dan transisi warna serta mengatur jarak, dan tebal font */
         .menu button {
             transition: color 0.3s;
             height: 50px;
@@ -19,6 +20,7 @@
             font-weight: bold;
         }
 
+        /* Mengatur ukuran gambar agar dapat menyesuaikan tampilan */
         .bg-banner img {
             max-width: 50%;
             height: auto;
@@ -28,14 +30,17 @@
 </head>
 
 <body>
+    <!-- Bagian navbar -->
     <nav class="navbar navbar-expand-lg bg-success bg-gradient">
         <div class="container-fluid">
+            <!-- Tombol toggle untuk mobile atau ketika lebar layar kecil -->
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+            <!-- Menu navbar untuk mengarahkan ke halaman pilihan beasiswa, registrasi, dan juga hasil -->
             <div class="navbar-collapse justify-content-md-center collapse" id="navbarsExample10">
                 <ul class="navbar-nav menu">
                     <li class="nav-item p-1">
@@ -55,17 +60,20 @@
         </div>
     </nav>
 
+    <!-- Bagian banner untuk menampilkan gambar yang disertai dengan animasi -->
     <div class="banner ">
         <div class="bg-banner text-center mt-5 animate__animated animate__fadeIn animate__zoomIn">
             <img src="/static/Banner.png" alt="logo">
         </div>
     </div>
 
+    <!-- Bagian isi Pilihan mahasiswa -->
     <section class="py-5 text-center container bg-">
         <div class="row py-lg-5 mb-1">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light animate__animated animate__fadeInDown"><b>Pilihan Beasiswa</b></h1>
                 <div class="row row-cols-1 row-cols-md-3 text-center">
+                    <!-- Informasi mengenai beasiswa akademik -->
                     <div class="col w-100 mt-3 animate__animated animate__fadeInLeft">
                         <div class="card mb-4 rounded-3 shadow-sm border-primary">
                             <div class="card-header py-3 text-bg-success bg-gradient border-primary">
@@ -74,11 +82,14 @@
                             <div class="card-body">
                                 <p>Potongan 25% BPP bagi Mahasiswa/i yang memiliki nilai IPK tinggi</p>
                                 <p>Dibutuhkan Nilai IPK</p>
-                                <p>Kuota dialokasikan terbatas, Dibutuhkan juga Sertifikat Prestasi Akademik atau keaktifan di ORMAWA dan Status Ekonomi Orang Tua</p>
+                                <p>Kuota dialokasikan terbatas, Dibutuhkan juga Sertifikat Prestasi Akademik atau
+                                    keaktifan di ORMAWA dan Status Ekonomi Orang Tua</p>
 
                             </div>
                         </div>
                     </div>
+
+                    <!-- Informasi mengenai beasiswa non akademik -->
                     <div class="col w-100 animate__animated animate__fadeInRight">
                         <div class="card mb-4 rounded-3 shadow-sm border-primary">
                             <div class="card-header py-3 text-bg-success bg-gradient border-primary">
@@ -88,10 +99,13 @@
                                 <p>Potongan 25% BPP bagi Mahasiswa/i yang memiliki prestasi level
                                     Regional/Nasional/Internasional</p>
                                 <p>Dibutuhkan Nilai IPK & Validasi dokumen sertifikat prestasi</p>
-                                <p>Kuota dialokasikan terbatas, Dibutuhkan juga Keaktifan di Ormawa dan Status Ekonomi Orang Tua</p>
+                                <p>Kuota dialokasikan terbatas, Dibutuhkan juga Keaktifan di Ormawa dan Status Ekonomi
+                                    Orang Tua</p>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Informasi mengenai beasiswa ormawa -->
                     <div class="col w-100 animate__animated animate__fadeInLeft">
                         <div class="card mb-4 rounded-3 shadow-sm border-primary">
                             <div class="card-header py-3 text-bg-success bg-gradient border-primary">
@@ -107,6 +121,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Tombol yang disertai fungsi untuk mengarahkan ke halaman daftar beasiswa -->
                 <button onclick="window.location.href='/daftar'" type="button"
                     class="w-100 btn btn-lg btn-success bg-gradient animate__animated animate__fadeInUp">Daftar
                     Sekarang</button>
